@@ -1,0 +1,14 @@
+{
+  "resourceName": "reactAuthAws",
+  "policyUUID": "0e2ffcb5",
+  "bucketName": "myappcab45ba5d93d4d8dbe57c1fefa63c2e7",
+  "storageAccess": "auth",
+  "guestAccess": [],
+  "authAccess": [
+    "CREATE_AND_UPDATE",
+    "READ",
+    "DELETE"
+  ],
+  "triggerFunction": "NONE",
+  "groupAccess": {}
+}
