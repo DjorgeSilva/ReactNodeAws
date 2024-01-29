@@ -1,6 +1,6 @@
-import getUsers from "../../controllers/getUsers";
+import getUsers from "./controllers/getUsers";
 
-export const onLoad = async () => {
+export const onLoadUsers = async () => {
   try {
     const resp = await getUsers();
     console.log(resp);

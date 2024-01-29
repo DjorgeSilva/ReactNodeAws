@@ -1,9 +1,28 @@
-import React from "react";
-import styled from "styled-components";
+import React, { useEffect } from "react";
+import { useDispatch } from "react-redux";
 import { Content } from "../components/Content";
 import { Form } from "../components/Form";
+import { setUserListAction } from "../store/actions";
+import { onLoadUsers } from "../utils";
+import { Container, Main, Title } from "./styles";
 
 export const Home = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const loadContent = async () => {
+      const data = await onLoadUsers();
+      if (data) {
+        dispatch(
+          setUserListAction({
+            userList: data,
+          })
+        );
+      }
+    };
+    loadContent();
+  }, []);
+
   return (
     <Container>
       <Title>Olá, novo usuário!</Title>
@@ -14,25 +33,3 @@ export const Home = () => {
     </Container>
   );
 };
-
-const Container = styled.div`
-  width: 100vw;
-  height: 100vh;
-  background-color: #c2c2c2;
-  overflow-x: hidden;
-  overflow-y: hidden;
-`;
-
-const Title = styled.h2`
-  text-align: center;
-`;
-
-const Main = styled.div`
-  width: 100%;
-  height: 100%;
-  background-color: #fff;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-`;

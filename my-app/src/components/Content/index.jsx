@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import { onDeleteUser } from "../../controllers/onDeleteUser";
 import {
   ButtonWrapper,
@@ -8,21 +9,14 @@ import {
   SubTitle,
   UserInfoWrapper,
 } from "./styles";
-import { onLoad } from "./useContent";
+
 export const Content = () => {
-  const [users, setUsers] = useState([]);
+  const userList = useSelector((store) => store.userStore.userList);
+  const [users, setUsers] = useState(userList);
 
   useEffect(() => {
-    const loadContent = async () => {
-      if (!users.length) {
-        const data = await onLoad();
-        if (data) {
-          setUsers(data);
-        }
-      }
-    };
-    loadContent();
-  }, []);
+    setUsers(userList);
+  }, [userList]);
 
   return (
     <Container>
