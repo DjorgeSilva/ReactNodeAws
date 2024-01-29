@@ -14,6 +14,7 @@ function CustomInput({ name, type, onChange }) {
         placeholder="&nbsp;"
         onChange={handleOnchange}
         name={name}
+        pattern={type === "number" && "[0-9]{1,5}"}
       />
       <span className="placeholder">Digite {name}</span>
     </label>
