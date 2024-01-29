@@ -69,6 +69,34 @@ router.post("/user", async (req, res) => {
 router.put("/user/:id", async (req, res) => {
   const user = req.body;
   const { id } = req.params;
+
+  // validate body
+  if (id) {
+    return res
+      .status(400)
+      .json({ success: false, message: "id é obrigatório" });
+  }
+  if (!user.name) {
+    return res
+      .status(400)
+      .json({ success: false, message: "nome é obrigatório" });
+  }
+  if (!user.age) {
+    return res
+      .status(400)
+      .json({ success: false, message: "idade é obrigatório" });
+  }
+  if (!user.job) {
+    return res
+      .status(400)
+      .json({ success: false, message: "cargo é obrigatório" });
+  }
+  if (!user.email) {
+    return res
+      .status(400)
+      .json({ success: false, message: "email é obrigatório" });
+  }
+
   user.id = id;
   const { success, data } = await createOrUpdate(user);
   if (success) {
