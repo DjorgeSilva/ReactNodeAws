@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { onDeleteUser } from "../../controllers/onDeleteUser";
+import { removeUserAction } from "../../store/actions";
 import {
   ButtonWrapper,
   Container,
@@ -11,12 +12,22 @@ import {
 } from "./styles";
 
 export const Content = () => {
+  const dispatch = useDispatch();
   const userList = useSelector((store) => store.userStore.userList);
   const [users, setUsers] = useState(userList);
 
   useEffect(() => {
     setUsers(userList);
   }, [userList]);
+
+  const onDelete = (id) => {
+    onDeleteUser(id);
+    dispatch(
+      removeUserAction({
+        id,
+      })
+    );
+  };
 
   return (
     <Container>
@@ -33,10 +44,10 @@ export const Content = () => {
               </LabelWrapper>
               <ButtonWrapper>
                 <div>
-                  <button onClick={() => onDeleteUser(user.id)}>Deletar</button>
+                  <button onClick={() => onDelete(user.id)}>Deletar</button>
                 </div>
                 <div>
-                  <button>Update</button>
+                  <button>Atualizar</button>
                 </div>
               </ButtonWrapper>
             </UserInfoWrapper>

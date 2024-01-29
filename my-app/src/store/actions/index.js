@@ -20,3 +20,10 @@ export function setSelectedUserAction(payload) {
     payload: payload.selectedUser,
   };
 }
+
+export function removeUserAction(payload) {
+  return {
+    type: ACTIONS_REDUX.REMOVE_USER,
+    payload: payload.id,
+  };
+}
