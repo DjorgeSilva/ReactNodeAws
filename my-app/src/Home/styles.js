@@ -6,6 +6,12 @@ export const Container = styled.div`
   background-color: #c2c2c2;
   overflow-x: hidden;
   overflow-y: hidden;
+
+  @media (max-width: 630px) {
+    height: fit-content;
+    overflow-x: auto;
+    overflow-y: auto;
+  }
 `;
 
 export const Title = styled.h2`
@@ -20,4 +26,8 @@ export const Main = styled.div`
   flex-direction: row;
   justify-content: center;
   align-items: center;
+
+  @media (max-width: 630px) {
+    flex-direction: column;
+  }
 `;

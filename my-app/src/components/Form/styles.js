@@ -9,6 +9,11 @@ export const FormContainer = styled.form`
   align-items: center;
   background-color: #c4c4cc;
   border-top: 1px solid #fff;
+
+  @media (max-width: 630px) {
+    width: 100%;
+    padding-bottom: 30px;
+  }
 `;
 
 export const SubTitle = styled.h3`

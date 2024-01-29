@@ -14,6 +14,11 @@ export const Container = styled.div`
   border-top: 1px solid #fff;
 
   overflow-y: auto;
+
+  @media (max-width: 630px) {
+    width: 100%;
+    overflow-y: hidden;
+  }
 `;
 
 export const SubTitle = styled.h3``;
@@ -28,6 +33,11 @@ export const UserInfoWrapper = styled.div`
   margin-bottom: 20px;
   border-radius: 10px;
   padding: 10px;
+
+  @media (max-width: 630px) {
+    flex-direction: column;
+    height: fit-content;
+  }
 `;
 
 export const LabelWrapper = styled.div`
@@ -42,6 +52,10 @@ export const LabelWrapper = styled.div`
 export const Label = styled.p`
   margin: 0;
   margin-top: 10px;
+
+  @media (max-width: 630px) {
+    margin-top: 5px;
+  }
 `;
 
 export const ButtonWrapper = styled.div`
@@ -52,4 +66,12 @@ export const ButtonWrapper = styled.div`
   flex-direction: column;
   justify-content: space-between;
   align-items: end;
+
+  @media (max-width: 630px) {
+    width: 100%;
+    height: fit-content;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 10px;
+  }
 `;
