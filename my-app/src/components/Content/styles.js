@@ -64,13 +64,13 @@ export const ButtonWrapper = styled.div`
 
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
   align-items: end;
 
   @media (max-width: 630px) {
     width: 100%;
     height: fit-content;
-    flex-direction: row;
+    justify-content: center;
     align-items: center;
     margin-top: 10px;
   }

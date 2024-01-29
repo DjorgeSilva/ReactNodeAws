@@ -25,7 +25,7 @@ export const Home = () => {
 
   return (
     <Container>
-      <Title>Olá, novo usuário!</Title>
+      <Title>Olá, seja bem-vindo!</Title>
       <Main>
         <Form />
         <Content />

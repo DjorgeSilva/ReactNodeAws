@@ -31,7 +31,7 @@ export const Content = () => {
 
   return (
     <Container>
-      <SubTitle>Cadastre um novo usuário</SubTitle>
+      <SubTitle>Lista de usuários</SubTitle>
       {users &&
         users.map((user, index) => {
           return (
@@ -45,9 +45,6 @@ export const Content = () => {
               <ButtonWrapper>
                 <div>
                   <button onClick={() => onDelete(user.id)}>Deletar</button>
-                </div>
-                <div>
-                  <button>Atualizar</button>
                 </div>
               </ButtonWrapper>
             </UserInfoWrapper>
