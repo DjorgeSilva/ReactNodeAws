@@ -1,14 +1,13 @@
-const { View, Image, useTheme, Text } = require("@aws-amplify/ui-react");
+import { Image, Text, View, useTheme } from "@aws-amplify/ui-react";
 
-export const components = {
+export const AwsComponents = {
   Header() {
     const { tokens } = useTheme();
-
     return (
       <View textAlign="center" padding={tokens.space.small}>
         <Image
           alt="stefanini-logo"
-          src={require(".././assets/logo-stefanini.png")}
+          src={require("../../assets/logo-stefanini.png")}
         />
       </View>
     );
