@@ -23,7 +23,7 @@ const userStoreReducer = (state = initialState, action) => {
         ...state,
         selectedUser: action.payload,
       };
-    case ACTIONS_REDUX.REMOVE_USER:
+    case ACTIONS_REDUX.REMOVE_USER: {
       const updatedUserList = state.userList.filter(
         (user) => user.id !== action.payload
       );
@@ -31,6 +31,13 @@ const userStoreReducer = (state = initialState, action) => {
         ...state,
         userList: updatedUserList,
       };
+    }
+    case ACTIONS_REDUX.ADD_USER: {
+      return {
+        ...state,
+        userList: [...state.userList, action.payload],
+      };
+    }
 
     default:
       return state;

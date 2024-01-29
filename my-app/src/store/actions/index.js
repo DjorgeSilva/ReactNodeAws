@@ -27,3 +27,10 @@ export function removeUserAction(payload) {
     payload: payload.id,
   };
 }
+
+export function addUserAction(payload) {
+  return {
+    type: ACTIONS_REDUX.ADD_USER,
+    payload: payload.user,
+  };
+}

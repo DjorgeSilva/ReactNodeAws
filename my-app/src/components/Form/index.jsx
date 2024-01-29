@@ -1,11 +1,13 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import { v4 as uuidv4 } from "uuid";
 import { EMPTY_STRING } from "../../constants";
+import { addUserAction } from "../../store/actions";
 import CustomInput from "../CustomInput";
 import { Button, FormContainer, SubTitle } from "./styles";
 import { onSaveNewUser } from "./useForm";
-
 export const Form = () => {
+  const dispatch = useDispatch();
   const [name, setName] = useState(EMPTY_STRING);
   const [job, setJob] = useState(EMPTY_STRING);
   const [age, setAge] = useState(EMPTY_STRING);
@@ -13,13 +15,21 @@ export const Form = () => {
 
   const onSubmit = async (event) => {
     event.preventDefault();
-    await onSaveNewUser({
+    const user = {
       id: uuidv4(),
       name,
       age,
       job,
       email,
-    });
+    };
+    const resp = await onSaveNewUser(user);
+    if (resp.success) {
+      dispatch(
+        addUserAction({
+          user,
+        })
+      );
+    }
   };
 
   return (
