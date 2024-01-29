@@ -14,6 +14,9 @@
     "categories": {
       "auth": {
         "myapp2318b41b": {}
+      },
+      "storage": {
+        "reactAuthAws": {}
       }
     }
   }
