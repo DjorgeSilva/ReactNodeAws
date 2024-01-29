@@ -1,5 +1,13 @@
 import React, { useEffect, useState } from "react";
-import { Container, Label, SubTitle, UserInfoWrapper } from "./styles";
+import { onDeleteUser } from "../../controllers/onDeleteUser";
+import {
+  ButtonWrapper,
+  Container,
+  Label,
+  LabelWrapper,
+  SubTitle,
+  UserInfoWrapper,
+} from "./styles";
 import { onLoad } from "./useContent";
 export const Content = () => {
   const [users, setUsers] = useState([]);
@@ -23,10 +31,20 @@ export const Content = () => {
         users.map((user, index) => {
           return (
             <UserInfoWrapper key={index}>
-              <Label>Nome: {user.name}</Label>
-              <Label>Idade: {user.age}</Label>
-              <Label>Cargo: {user.job}</Label>
-              <Label>email: {user.email}</Label>
+              <LabelWrapper>
+                <Label>Nome: {user.name}</Label>
+                <Label>Idade: {user.age}</Label>
+                <Label>Cargo: {user.job}</Label>
+                <Label>email: {user.email}</Label>
+              </LabelWrapper>
+              <ButtonWrapper>
+                <div>
+                  <button onClick={() => onDeleteUser(user.id)}>Deletar</button>
+                </div>
+                <div>
+                  <button>Update</button>
+                </div>
+              </ButtonWrapper>
             </UserInfoWrapper>
           );
         })}
