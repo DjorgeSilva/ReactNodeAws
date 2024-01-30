@@ -24,18 +24,26 @@ const userStoreReducer = (state = initialState, action) => {
         selectedUser: action.payload,
       };
     case ACTIONS_REDUX.REMOVE_USER: {
-      const updatedUserList = state.userList.filter(
-        (user) => user.id !== action.payload
-      );
       return {
         ...state,
-        userList: updatedUserList,
+        userList: state.userList.filter((user) => user.id !== action.payload),
       };
     }
     case ACTIONS_REDUX.ADD_USER: {
       return {
         ...state,
         userList: [...state.userList, action.payload],
+      };
+    }
+    case ACTIONS_REDUX.UPDATE_USER: {
+      return {
+        ...state,
+        userList: state.userList.map((user) => {
+          if (user.id === action.payload.id) {
+            return { ...action.payload };
+          }
+          return user;
+        }),
       };
     }
 

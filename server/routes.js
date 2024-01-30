@@ -71,7 +71,7 @@ router.put("/user/:id", async (req, res) => {
   const { id } = req.params;
 
   // validate body
-  if (id) {
+  if (!id) {
     return res
       .status(400)
       .json({ success: false, message: "id é obrigatório" });

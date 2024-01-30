@@ -34,3 +34,10 @@ export function addUserAction(payload) {
     payload: payload.user,
   };
 }
+
+export function updateUserAction(payload) {
+  return {
+    type: ACTIONS_REDUX.UPDATE_USER,
+    payload: payload.user,
+  };
+}
