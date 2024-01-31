@@ -1,7 +1,7 @@
 import React from "react";
 import "./styles.css";
 
-function CustomInput({ name, type, onChange }) {
+function CustomInput({ name, type, onChange, value }) {
   const handleOnchange = (event) => {
     event.preventDefault();
     onChange(event.target.value);
@@ -14,7 +14,8 @@ function CustomInput({ name, type, onChange }) {
         placeholder="&nbsp;"
         onChange={handleOnchange}
         name={name}
-        pattern={type === "number" && "[0-9]{1,5}"}
+        pattern={type === "number" ? "[0-9]{1,5}" : undefined}
+        value={value}
       />
       <span className="placeholder">Digite {name}</span>
     </label>

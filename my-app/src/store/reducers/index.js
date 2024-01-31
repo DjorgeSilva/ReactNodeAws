@@ -3,7 +3,7 @@ import { ACTIONS_REDUX } from "../../constants";
 const initialState = {
   currentUser: {},
   userList: [],
-  selectedUser: {},
+  selectedUser: undefined,
 };
 
 const userStoreReducer = (state = initialState, action) => {
@@ -30,14 +30,17 @@ const userStoreReducer = (state = initialState, action) => {
       };
     }
     case ACTIONS_REDUX.ADD_USER: {
+      state.userList.splice(0, 0, action.payload);
       return {
         ...state,
-        userList: [...state.userList, action.payload],
+        selectedUser: undefined,
+        userList: [...state.userList],
       };
     }
     case ACTIONS_REDUX.UPDATE_USER: {
       return {
         ...state,
+        selectedUser: undefined,
         userList: state.userList.map((user) => {
           if (user.id === action.payload.id) {
             return { ...action.payload };

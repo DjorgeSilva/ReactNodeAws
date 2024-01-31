@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { onDeleteUser } from "../../controllers/onDeleteUser";
-import { removeUserAction } from "../../store/actions";
+import { removeUserAction, setSelectedUserAction } from "../../store/actions";
 import {
   ButtonWrapper,
   Container,
@@ -14,26 +14,12 @@ import {
 export const Content = () => {
   const dispatch = useDispatch();
   const userList = useSelector((store) => store.userStore.userList);
-  const [users, setUsers] = useState(userList);
-
-  useEffect(() => {
-    setUsers(userList);
-  }, [userList]);
-
-  const onDelete = (id) => {
-    onDeleteUser(id);
-    dispatch(
-      removeUserAction({
-        id,
-      })
-    );
-  };
 
   return (
     <Container>
       <SubTitle>Lista de usuários</SubTitle>
-      {users &&
-        users.map((user, index) => {
+      {userList &&
+        userList.map((user, index) => {
           return (
             <UserInfoWrapper key={index}>
               <LabelWrapper>
@@ -44,7 +30,27 @@ export const Content = () => {
               </LabelWrapper>
               <ButtonWrapper>
                 <div>
-                  <button onClick={() => onDelete(user.id)}>Deletar</button>
+                  <button
+                    onClick={() => {
+                      onDeleteUser(user.id);
+                      dispatch(
+                        removeUserAction({
+                          id: user.id,
+                        })
+                      );
+                    }}
+                  >
+                    Deletar
+                  </button>
+                </div>
+                <div>
+                  <button
+                    onClick={() =>
+                      dispatch(setSelectedUserAction({ selectedUser: user }))
+                    }
+                  >
+                    Atualizar
+                  </button>
                 </div>
               </ButtonWrapper>
             </UserInfoWrapper>
