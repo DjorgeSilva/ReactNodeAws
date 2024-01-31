@@ -10,7 +10,7 @@ export const FormContainer = styled.form`
   background-color: #c4c4cc;
   border-top: 1px solid #fff;
 
-  @media (max-width: 630px) {
+  @media (max-width: 720px) {
     width: 100%;
     padding-bottom: 30px;
   }

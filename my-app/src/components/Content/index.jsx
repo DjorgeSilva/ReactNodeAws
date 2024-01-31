@@ -1,8 +1,6 @@
 import React from "react";
 import { Commet } from "react-loading-indicators";
 import { useDispatch, useSelector } from "react-redux";
-import { onDeleteUser } from "../../controllers/onDeleteUser";
-import { removeUserAction, setSelectedUserAction } from "../../store/actions";
 import {
   ButtonWrapper,
   Container,
@@ -12,6 +10,7 @@ import {
   SubTitle,
   UserInfoWrapper,
 } from "./styles";
+import { onDeleteClick, onUpdateClick } from "./useContent";
 
 export const Content = () => {
   const dispatch = useDispatch();
@@ -34,23 +33,14 @@ export const Content = () => {
                 <div>
                   <button
                     onClick={() => {
-                      onDeleteUser(user.id);
-                      dispatch(
-                        removeUserAction({
-                          id: user.id,
-                        })
-                      );
+                      onDeleteClick(dispatch, user.id);
                     }}
                   >
                     Deletar
                   </button>
                 </div>
                 <div>
-                  <button
-                    onClick={() =>
-                      dispatch(setSelectedUserAction({ selectedUser: user }))
-                    }
-                  >
+                  <button onClick={() => onUpdateClick(dispatch, user)}>
                     Atualizar
                   </button>
                 </div>

@@ -7,7 +7,7 @@ export const Container = styled.div`
   overflow-x: hidden;
   overflow-y: hidden;
 
-  @media (max-width: 630px) {
+  @media (max-width: 720px) {
     height: fit-content;
     overflow-x: auto;
     overflow-y: auto;
@@ -27,7 +27,7 @@ export const Main = styled.div`
   justify-content: center;
   align-items: center;
 
-  @media (max-width: 630px) {
+  @media (max-width: 720px) {
     flex-direction: column;
   }
 `;
