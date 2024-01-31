@@ -72,6 +72,13 @@ export const ButtonWrapper = styled.div`
     height: fit-content;
     justify-content: center;
     align-items: center;
-    margin-top: 10px;
   }
+`;
+
+export const LoadingWrapper = styled.div`
+  width: 100%;
+  height: 70%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;

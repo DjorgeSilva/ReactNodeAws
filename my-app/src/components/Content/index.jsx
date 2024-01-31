@@ -1,4 +1,5 @@
 import React from "react";
+import { Commet } from "react-loading-indicators";
 import { useDispatch, useSelector } from "react-redux";
 import { onDeleteUser } from "../../controllers/onDeleteUser";
 import { removeUserAction, setSelectedUserAction } from "../../store/actions";
@@ -7,6 +8,7 @@ import {
   Container,
   Label,
   LabelWrapper,
+  LoadingWrapper,
   SubTitle,
   UserInfoWrapper,
 } from "./styles";
@@ -18,7 +20,7 @@ export const Content = () => {
   return (
     <Container>
       <SubTitle>Lista de usuários</SubTitle>
-      {userList &&
+      {userList.length ? (
         userList.map((user, index) => {
           return (
             <UserInfoWrapper key={index}>
@@ -55,7 +57,12 @@ export const Content = () => {
               </ButtonWrapper>
             </UserInfoWrapper>
           );
-        })}
+        })
+      ) : (
+        <LoadingWrapper>
+          <Commet color="#fff" size="medium" />
+        </LoadingWrapper>
+      )}
     </Container>
   );
 };
